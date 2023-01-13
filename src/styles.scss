@@ -1,1 +1,175 @@
-/* You can add global styles to this file, and also import other style files */
+// Font //
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;1,700&display=swap');
+
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
+// background: linear-gradient(to right, #87211c, #490249);
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Mulish', sans-serif;
+  position: relative;
+  color: $black1;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+}
+
+/* General starts */
+a {
+  color: $black1;
+}
+button {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+input,
+button,
+textarea,
+select {
+  font-family: 'Mulish', sans-serif;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active{
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+  &[readonly] {
+    background: $grey2 !important;
+  }
+}
+input::placeholder,
+textarea::placeholder {
+  font-family: 'Mulish', sans-serif;
+}
+textarea {
+  resize: none;
+}
+
+/* Buttons Starts */
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: center;
+  outline: none;
+  transition: all 0.4s;
+  z-index: 1;
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+.prim_btn {
+  color: $white-color;
+  background-color: $primary1;
+  border: 2px solid $primary1;
+  &:hover {
+    background-color: $white-color;
+    color: $primary1;
+  }
+}
+.sec_btn {
+  color: $white-color;
+  background-color: $secondary1;
+  border: 2px solid $secondary1;
+  &:hover {
+    background-color: $white-color;
+    color: $secondary1;
+  }
+}
+.tert_btn {
+  color: $primary1;
+  background-color: $white-color;
+  border: 2px solid $primary1;
+  &:hover {
+    background-color: $primary1;
+    color: $white-color;
+  }
+}
+.load_btn {
+  display: flex;
+  justify-content: center;
+}
+
+/* Buttons ends */
+
+.bg-success-color {
+  background: $success1;
+}
+.bg-danger-color {
+  background: $error1;
+}
+.bg-warning-color {
+  background: $warning1;
+}
+.text-success {
+  color: $success1;
+}
+.text-danger {
+  color: $error1;
+}
+.text-warning {
+  color: $warning1;
+}
+.dis-flex {
+  display: flex;
+  align-items: center;
+}
+.clickable {
+  cursor: pointer;
+}
+.uc {
+  text-transform: uppercase;
+}
+.hover-1 {
+  transition: all 0.2s;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Heading and paragragh starts //
+h1 {
+  font-size: 44px;
+}
+h2 {
+  font-size: 34px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 22px;
+}
+h5 {
+  font-size: 20px;
+}
+h6 {
+  font-size: 18px;
+}
+p {
+  font-size: 18px;
+  font-weight: 500;
+}
+small {
+  font-size: 14px;
+
+}
+// Heading and paragragh ends //
+

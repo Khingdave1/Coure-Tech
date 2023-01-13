@@ -1,0 +1,56 @@
+<div class="sidenav_container">
+    <nav>
+      <ul>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
+          routerLink="/admin"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bxs-dashboard icon'></i>
+          </span>
+          Overview
+        </li>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
+          routerLink="/admin/products"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bx-male-female icon'></i>
+          </span>
+          Students
+        </li>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
+          routerLink="/admin/display-admins"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bxs-school icon'></i>
+          </span>
+          Schools
+        </li>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
+          routerLink="/admin/settings"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bx-building icon'></i>
+          </span>
+          Departments
+        </li>
+      </ul>
+    </nav>
+    <div class="log-out dis-flex hover-1">
+      <i class='bx bx-log-out icon'></i>
+      <p class="clickable" (click)="logOut()">Log Out</p>
+    </div>
+  </div>
+  

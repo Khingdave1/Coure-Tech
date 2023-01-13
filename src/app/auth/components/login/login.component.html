@@ -1,0 +1,38 @@
+<div class="auth">
+    <div class="auth_content">
+      <div class="auth_content_header">
+        <p>Login to continue</p>
+        <h2>
+          Welcome back Admin <img src="../../../../assets/img/hi.svg" alt="image" />
+        </h2>
+      </div>
+      <form class="form">
+        <div class="form_control">
+          <label for="email">Email</label>
+          <div class="form_control_input">
+              <input type="email" id="email" placeholder="Enter email">
+          </div>
+        </div>
+        <div class="form_control">
+            <label for="password">Password</label>
+            <div class="form_control_input dis-flex">
+                <input [type]="hide ? 'password' : 'text'" id="" placeholder="Enter password" />
+                <i
+                [class]="
+                  hide ? 'bx bx-show clickable icon' : 'bx bx-hide clickable icon'
+                "
+                (click)="hide = !hide"
+              ></i>
+            </div>
+        </div>
+        <div class="form_btn">
+          <button class="btn prim_btn" routerLink="/admin">Login</button>
+        </div>
+      </form>
+      <div class="auth_content_others">
+        <span class="clickable hover-1"
+          >Forgot Password?</span
+        >
+      </div>
+    </div>
+  </div>
