@@ -7,7 +7,7 @@
 
 <form class="form" [formGroup]="studentForm">
     <div class="form_control">
-        <label for="title">Title</label>
+        <label for="title">Title <strong class="required">*</strong></label>
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.title.errors
           }">
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="form_control">
-        <label for="firstName">First Name</label>
+        <label for="firstName">First Name <strong class="required">*</strong></label>
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.firstName.errors
           }">
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="form_control">
-        <label for="lastName">Last Name</label>
+        <label for="lastName">Last Name <strong class="required">*</strong></label>
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.lastName.errors
           }">
@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="form_control">
-        <label for="email">Email</label>
+        <label for="email">Email <strong class="required">*</strong></label>
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.email.errors
           }">
@@ -74,7 +74,7 @@
         </div>
     </div>
     <div class="form_control">
-        <label for="phoneNumber">Phone Number</label>
+        <label for="phoneNumber">Phone Number <strong class="required">*</strong></label>
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.phoneNumber.errors
           }">
@@ -90,7 +90,7 @@
         </div>
     </div>
     <div class="form_control">
-        <label for="address">Address</label>
+        <label for="address">Address <strong class="required">*</strong></label>
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.address.errors
           }">
@@ -106,7 +106,7 @@
         </div>
     </div>
     <div class="form_control">
-        <label for="dateOfBirth">Date of Birth</label>
+        <label for="dateOfBirth">Date of Birth <strong class="required">*</strong></label>
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.dateOfBirth.errors
           }">
@@ -122,7 +122,7 @@
         </div>
     </div>
     <div class="form_control">
-        <label for="department">Department</label>
+        <label for="department">Department <strong class="required">*</strong></label>
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.department.errors
           }">
@@ -138,7 +138,7 @@
         </div>
     </div>
     <div class="form_control">
-        <label for="school">School</label>
+        <label for="school">School <strong class="required">*</strong></label>
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.school.errors
           }">

@@ -28,10 +28,13 @@
   grid-gap: $s-2;
   &_control {
       label {
-          font-size: 18px;
-          font-weight: 500;
-          display: inline-block;
-          margin-bottom: $s-1;
+        font-size: 18px;
+        font-weight: 500;
+        display: inline-block;
+        margin-bottom: $s-1;
+        .required {
+          color: $error1;
+        }
       }
       &_input {
         @include input-field();
@@ -41,7 +44,6 @@
       }
       &_message {
         // margin-top: $s-1;
-
         color: $error1;
       }
   }

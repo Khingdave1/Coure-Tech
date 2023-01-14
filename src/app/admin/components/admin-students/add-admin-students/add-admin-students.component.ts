@@ -12,7 +12,6 @@ export class AddAdminStudentsComponent {
 
   @Output() addModal: EventEmitter<any> = new EventEmitter();
 
-
   loading: boolean = false;
   alertMessage: string = '';
   alertColor: string = '';
@@ -46,7 +45,18 @@ export class AddAdminStudentsComponent {
   // Save and close student
   saveAndCloseStudent() {
 
-    this.validateForm()
+    // Start loading
+    this.loading = true;
+
+    // Set submitted to true
+    this.isFormSubmitted = true;
+
+    // If Form is invalid
+    if (this.studentForm.invalid) {
+      this.loading = false;
+
+      return;
+    }
 
     this.setPayload()
 
@@ -73,7 +83,18 @@ export class AddAdminStudentsComponent {
   // Save and New student
   saveAndNewStudent() {
 
-    this.validateForm()
+    // Start loading
+    this.loading = true;
+
+    // Set submitted to true
+    this.isFormSubmitted = true;
+
+    // If Form is invalid
+    if (this.studentForm.invalid) {
+      this.loading = false;
+
+      return;
+    }
 
     this.setPayload()
 
@@ -113,22 +134,6 @@ export class AddAdminStudentsComponent {
           name: this.studentForm.value.school
         }
       }
-    }
-  }
-
-  // Validate form
-  validateForm() {
-    // Start loading
-    this.loading = true;
-
-    // Set submitted to true
-    this.isFormSubmitted = true;
-
-    // If Form is invalid
-    if (this.studentForm.invalid) {
-      this.loading = false;
-
-      return;
     }
   }
 

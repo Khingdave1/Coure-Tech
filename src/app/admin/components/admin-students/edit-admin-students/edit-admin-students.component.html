@@ -1,17 +1,69 @@
-<form class="form">
+<!-- Alert -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [alertMessage]="alertMessage"
+  [alertColor]="alertColor"
+></app-alert-popup>
+
+<form class="form" [formGroup]="studentForm">
     <div class="form_control">
-        <label for="email">Email</label>
+        <label for="title">Title</label>
         <div class="form_control_input">
-            <input type="email" id="email" placeholder="Enter email">
+            <input type="text" id="title" placeholder="Enter Title" formControlName="title">
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="firstName">First Name</label>
+        <div class="form_control_input">
+            <input type="text" id="firstName" placeholder="Enter First Name" formControlName="firstName">
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="lastName">Last Name</label>
+        <div class="form_control_input">
+            <input type="text" id="lastName" placeholder="Enter Last Name" formControlName="lastName">
         </div>
     </div>
     <div class="form_control">
         <label for="email">Email</label>
         <div class="form_control_input">
-            <input type="email" id="email" placeholder="Enter email">
+            <input type="email" id="email" placeholder="Enter Email" formControlName="email">
         </div>
     </div>
-    <div class="form_btn">
-        <button class="btn prim_btn">Login</button>
+    <div class="form_control">
+        <label for="phoneNumber">Phone Number</label>
+        <div class="form_control_input">
+            <input type="tel" id="phoneNumber" placeholder="Enter Phone Number" formControlName="phoneNumber">
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="address">Address</label>
+        <div class="form_control_input">
+            <input type="text" id="address" placeholder="Enter Address" formControlName="address">
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="dateOfBirth">Date of Birth</label>
+        <div class="form_control_input">
+            <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="department">Department</label>
+        <div class="form_control_input">
+            <input type="text" id="department" placeholder="Enter Department" formControlName="department">
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="school">School</label>
+        <div class="form_control_input">
+            <input type="text" id="school" placeholder="Enter School" formControlName="school">
+        </div>
+    </div>
+    <div class="form_btn dis-flex">
+        <button class="btn tert_btn" *ngIf="!loading" (click)="updateStudent()">Save</button>
+        <button class="btn load_btn" *ngIf="loading" [disabled]="loading">
+          <app-loader></app-loader>
+        </button>
     </div>
 </form>

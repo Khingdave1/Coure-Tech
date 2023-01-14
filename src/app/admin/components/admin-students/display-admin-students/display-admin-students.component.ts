@@ -20,6 +20,7 @@ export class DisplayAdminStudentsComponent {
   alertMessage: string = '';
   alertColor: string = '';
   isAlert: boolean = false;
+  currentStudentId: any;
 
   constructor(
     private studentService: StudentService,
@@ -29,8 +30,7 @@ export class DisplayAdminStudentsComponent {
   ) {}
 
   ngOnInit(): void {
-
-    // Get All Admins
+    // Get All students
     this.studentService.getStudents().subscribe({
       next: (res: any) => {
         this.students = res;
@@ -44,9 +44,6 @@ export class DisplayAdminStudentsComponent {
     this.primengConfig.ripple = true;
   }
 
-
-    
-
   // Open add Modal
   openAddModal() {
     this.addModal = true
@@ -59,8 +56,10 @@ export class DisplayAdminStudentsComponent {
   }
   
   // Open edit Student
-  openEditModal(student: any) {
+  openEditModal(studentId: any) {
     this.editModal = true;
+
+    this.currentStudentId = studentId;
   }
   
   // Close edit Student

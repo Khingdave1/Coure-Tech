@@ -15,6 +15,7 @@
     </div>
 </section>
 
+<!-- Data Table -->
 <section class="data-sect">
     <div class="data-sect_header">
         <ul class="data-sect_header_list dis-flex">
@@ -90,7 +91,7 @@
                             icon="pi pi-pencil"
                             class="p-button-rounded p-button-primary p-button-text"
                             (click)="
-                            openEditModal(student)
+                            openEditModal(student.id)
                             "
                         ></button>
                         <button
@@ -130,6 +131,7 @@
     </div>
 </section>
 
+<!-- Modal -->
 <div class="modal" *ngIf="addModal || editModal">
     <div class="modal_area">
         <span class="modal_area_close clickable" (click)="addModal = false || editModal = false">
@@ -147,30 +149,10 @@
             <div class="modal_area_header">
                 <h3 class="modal_area_header_title">Edit Student</h3>
             </div>
-            <app-edit-admin-students (editModal)="closeEditModal()"></app-edit-admin-students>
+            <app-edit-admin-students (editModal)="closeEditModal()" [studentId]="currentStudentId"></app-edit-admin-students>
         </ng-container>
     </div>
 </div>
-
-<!-- <div class="modal">
-    [class.show-modal]="addModal || editModal"
-    <div class="modal_area">
-        
-      <app-add
-        *ngIf="addModal"
-        [postUrl]="postUrl"
-        [modalHeaderName]="modalHeaderName"
-        (addModal)="closeAddModal()"
-      ></app-add>
-      <app-edit
-        *ngIf="editModal"
-        [updateUrl]="updateProjectUrl"
-        [currentItem]="currentItem"
-        [modalHeaderName]="modalHeaderName"
-        (editModal)="closeEditModal()"
-      ></app-edit>
-    </div>
-  </div> -->
   
 
   
