@@ -18,7 +18,7 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { AddAdminStudentsComponent } from './components/admin-students/add-admin-students/add-admin-students.component';
-import { EditAdminStudentsComponent } from './components/admin-students/edit-admin-students/edit-admin-students.component';
+import { EditAdminStudentComponent } from './components/admin-students/edit-admin-student/edit-admin-students.component';
 import { DisplayAdminSchoolsComponent } from './components/admin-schools/display-admin-schools/display-admin-schools.component';
 import { AddAdminSchoolsComponent } from './components/admin-schools/add-admin-schools/add-admin-schools.component';
 import { EditAdminSchoolsComponent } from './components/admin-schools/edit-admin-schools/edit-admin-schools.component';
@@ -30,7 +30,7 @@ import { EditAdminSchoolsComponent } from './components/admin-schools/edit-admin
     DisplayAdminStudentsComponent,
     AdminOverviewComponent,
     AddAdminStudentsComponent,
-    EditAdminStudentsComponent,
+    EditAdminStudentComponent,
     DisplayAdminSchoolsComponent,
     AddAdminSchoolsComponent,
     EditAdminSchoolsComponent
