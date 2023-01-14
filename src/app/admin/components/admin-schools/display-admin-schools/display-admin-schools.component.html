@@ -112,14 +112,14 @@
             <div class="modal_area_header">
                 <h3 class="modal_area_header_title">Add School</h3>
             </div>
-            <app-add-admin-schools (addModal)="closeAddModal()"></app-add-admin-schools>
+            <app-add-admin-school (addModal)="closeAddModal()"></app-add-admin-school>
         </ng-container>
         <!-- Edit modal -->
         <ng-container *ngIf="editModal">
             <div class="modal_area_header">
                 <h3 class="modal_area_header_title">Edit School</h3>
             </div>
-            <app-edit-admin-schools (editModal)="closeEditModal()" [schoolId]="currentSchoolId"></app-edit-admin-schools>
+            <app-edit-admin-school (editModal)="closeEditModal()" [schoolId]="currentSchoolId"></app-edit-admin-school>
         </ng-container>
     </div>
 </div>

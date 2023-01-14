@@ -17,11 +17,11 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { CascadeSelectModule } from 'primeng/cascadeselect';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import { AddAdminStudentsComponent } from './components/admin-students/add-admin-students/add-admin-students.component';
+import { AddAdminStudentComponent } from './components/admin-students/add-admin-student/add-admin-student.component';
 import { EditAdminStudentComponent } from './components/admin-students/edit-admin-student/edit-admin-students.component';
 import { DisplayAdminSchoolsComponent } from './components/admin-schools/display-admin-schools/display-admin-schools.component';
-import { AddAdminSchoolsComponent } from './components/admin-schools/add-admin-schools/add-admin-schools.component';
-import { EditAdminSchoolsComponent } from './components/admin-schools/edit-admin-schools/edit-admin-schools.component';
+import { AddAdminSchoolComponent } from './components/admin-schools/add-admin-school/add-admin-school.component';
+import { EditAdminSchoolComponent } from './components/admin-schools/edit-admin-school/edit-admin-school.component';
 
 
 @NgModule({
@@ -29,11 +29,11 @@ import { EditAdminSchoolsComponent } from './components/admin-schools/edit-admin
     AdminComponent,
     DisplayAdminStudentsComponent,
     AdminOverviewComponent,
-    AddAdminStudentsComponent,
+    AddAdminStudentComponent,
     EditAdminStudentComponent,
     DisplayAdminSchoolsComponent,
-    AddAdminSchoolsComponent,
-    EditAdminSchoolsComponent
+    AddAdminSchoolComponent,
+    EditAdminSchoolComponent
   ],
   imports: [
     CommonModule,

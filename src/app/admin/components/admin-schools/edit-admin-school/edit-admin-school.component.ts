@@ -5,11 +5,11 @@ import { first } from 'rxjs';
 import { SchoolService } from 'src/app/admin/services/school.service';
 
 @Component({
-  selector: 'app-edit-admin-schools',
-  templateUrl: './edit-admin-schools.component.html',
-  styleUrls: ['./edit-admin-schools.component.scss']
+  selector: 'app-edit-admin-school',
+  templateUrl: './edit-admin-school.component.html',
+  styleUrls: ['./edit-admin-school.component.scss']
 })
-export class EditAdminSchoolsComponent {
+export class EditAdminSchoolComponent {
 
   @Output() editModal: EventEmitter<any> = new EventEmitter();
   @Input() schoolId: any;

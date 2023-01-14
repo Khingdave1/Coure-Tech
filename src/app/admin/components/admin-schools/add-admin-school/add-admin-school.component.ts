@@ -4,11 +4,11 @@ import { first } from 'rxjs';
 import { SchoolService } from 'src/app/admin/services/school.service';
 
 @Component({
-  selector: 'app-add-admin-schools',
-  templateUrl: './add-admin-schools.component.html',
-  styleUrls: ['./add-admin-schools.component.scss']
+  selector: 'app-add-admin-school',
+  templateUrl: './add-admin-school.component.html',
+  styleUrls: ['./add-admin-school.component.scss']
 })
-export class AddAdminSchoolsComponent {
+export class AddAdminSchoolComponent {
 
   @Output() addModal: EventEmitter<any> = new EventEmitter();
 
