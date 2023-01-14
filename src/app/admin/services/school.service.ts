@@ -2,25 +2,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
-import { IStudent } from '../interfaces/student';
+import { ISchool } from '../interfaces/school';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StudentService {
+export class SchoolService {
 
   baseUrl: string = 'https://sampleapi.coure-tech.com/api/';
   userData: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  // get students
-  getStudents(): Observable<IStudent> {
+  // get schools
+  getSchools(): Observable<ISchool> {
     return this.http
-      .get<IStudent>(`${this.baseUrl}students`)
+      .get<ISchool>(`${this.baseUrl}schools`)
       .pipe(
         switchMap((res: any) => {
-          console.log(`Students fetched successfully`, res);
+          console.log(`Schools fetched successfully`, res);
           return of(res);
         }),
         catchError((err: any) => {
@@ -29,13 +29,13 @@ export class StudentService {
       );
   }
 
-  // get student by Id
-  getStudentById(studentId: any): Observable<IStudent> {
+  // get school by Id
+  getSchoolById(schoolId: any): Observable<ISchool> {
     return this.http
-      .get<IStudent>(`${this.baseUrl}students/${studentId}`)
+      .get<ISchool>(`${this.baseUrl}schools/${schoolId}`)
       .pipe(
         switchMap((res: any) => {
-          console.log(`Student fetched successfully`, res);
+          console.log(`School fetched successfully`, res);
           return of(res);
         }),
         catchError((err: any) => {
@@ -44,13 +44,13 @@ export class StudentService {
       );
   }
 
-  // Add student
-  addStudent(data: any): Observable<IStudent> {
+  // Add school
+  addSchool(data: any): Observable<ISchool> {
     return this.http
-      .post<IStudent>(`${this.baseUrl}students/`, data)
+      .post<ISchool>(`${this.baseUrl}schools/`, data)
       .pipe(
         switchMap((res: any) => {
-          console.log(`Student added successfully`, res);
+          console.log(`School added successfully`, res);
           return of(res);
         }),
         catchError((err: any) => {
@@ -59,41 +59,42 @@ export class StudentService {
       );
   }
 
-  // Update student
-  updateStudent(studentId: string, data: any): Observable<IStudent> {
+  // Update school
+  updateSchool(schoolId: string, data: any): Observable<ISchool> {
     return this.http
-      .put<IStudent>(
-        `${this.baseUrl}students/${studentId}`,
+      .put<ISchool>(
+        `${this.baseUrl}schools/${schoolId}`,
         data,
       
       )
       .pipe(
         switchMap((res: any) => {
-          console.log(`Student updated successfully`, res);
+          console.log(`School updated successfully`, res);
           return of(res);
         }),
         catchError((err: any) => {
-          return throwError(() => new Error(err));
+          return throwError(() => new Error(err.error.message));
         })
       );
   }
 
-  // Delete Student
-  deleteStudent(studentId: any): Observable<IStudent> {
+  // Delete School
+  deleteSchool(schoolId: any): Observable<ISchool> {
     return this.http
-      .delete<IStudent>(
-        `${this.baseUrl}students/${studentId}`
+      .delete<ISchool>(
+        `${this.baseUrl}schools/${schoolId}`
       )
       .pipe(
         switchMap((res: any) => {
-          console.log(`Student deleted successfully`, res);
+          console.log(`School deleted successfully`, res);
           return of(res);
         }),
         catchError((err: any) => {
           return throwError(
-            () => new Error('Failed to delete Student')
+            () => new Error('Failed to delete School')
           );
         })
       );
   }
+
 }

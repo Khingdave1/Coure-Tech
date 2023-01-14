@@ -1,0 +1,21 @@
+<!-- Alert -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [alertMessage]="alertMessage"
+  [alertColor]="alertColor"
+></app-alert-popup>
+
+<form class="form" [formGroup]="schoolForm">
+    <div class="form_control">
+        <label for="name">Name</label>
+        <div class="form_control_input">
+            <input type="text" id="name" placeholder="Enter Name" formControlName="name">
+        </div>
+    </div>
+    <div class="form_btn dis-flex">
+        <button class="btn tert_btn" *ngIf="!loading" (click)="updateSchool()">Save</button>
+        <button class="btn load_btn" *ngIf="loading" [disabled]="loading">
+          <app-loader></app-loader>
+        </button>
+    </div>
+</form>

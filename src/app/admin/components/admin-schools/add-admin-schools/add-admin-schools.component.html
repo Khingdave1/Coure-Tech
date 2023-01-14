@@ -1,0 +1,32 @@
+<!-- Alert -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [alertMessage]="alertMessage"
+  [alertColor]="alertColor"
+></app-alert-popup>
+
+<form class="form" [formGroup]="schoolForm">
+    <div class="form_control">
+        <label for="name">Name <strong class="required">*</strong></label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && schoolForm.controls.name.errors
+          }">
+            <input type="text" id="name" placeholder="Enter Name" formControlName="name">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && schoolForm.controls.name.errors"
+          >
+            <small *ngIf="schoolForm.controls.name.errors.required"
+              >Name is required</small
+            >
+        </div>
+    </div>
+    <div class="form_btn dis-flex">
+        <button class="btn tert_btn" *ngIf="!loading" (click)="saveAndNewSchool()">Save and New</button>
+        <button class="btn prim_btn" *ngIf="!loading" (click)="saveAndCloseSchool()">Save and Close</button>
+        <button class="btn load_btn" *ngIf="loading" [disabled]="loading">
+          <app-loader></app-loader>
+        </button>
+    </div>
+</form>

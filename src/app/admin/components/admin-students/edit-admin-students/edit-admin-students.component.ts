@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs';
 import { StudentService } from 'src/app/admin/services/student.service';
 
@@ -18,7 +18,6 @@ export class EditAdminStudentsComponent {
   alertMessage: string = '';
   alertColor: string = '';
   isAlert: boolean = false;
-  // studentForm: any = FormGroup;
   hide: boolean = true;
   isFormSubmitted: boolean = false;
   isSignedin: boolean = false;
@@ -74,7 +73,8 @@ export class EditAdminStudentsComponent {
   // update student
   updateStudent() {
 
-    this.validateForm()
+    // Start loading
+    this.loading = true;
 
     this.setPayload()
 
@@ -101,6 +101,7 @@ export class EditAdminStudentsComponent {
   // Set payload
   setPayload() {
     this.studentPayload = {
+      id: this.student.id,
       firstName: this.studentForm.value.firstName,
       lastName: this.studentForm.value.lastName,
       title: this.studentForm.value.title,
@@ -114,22 +115,6 @@ export class EditAdminStudentsComponent {
           name: this.studentForm.value.school
         }
       }
-    }
-  }
-
-  // Validate form
-  validateForm() {
-    // Start loading
-    this.loading = true;
-
-    // Set submitted to true
-    this.isFormSubmitted = true;
-
-    // If Form is invalid
-    if (this.studentForm.invalid) {
-      this.loading = false;
-
-      return;
     }
   }
 

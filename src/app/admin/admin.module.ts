@@ -19,6 +19,9 @@ import { CascadeSelectModule } from 'primeng/cascadeselect';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { AddAdminStudentsComponent } from './components/admin-students/add-admin-students/add-admin-students.component';
 import { EditAdminStudentsComponent } from './components/admin-students/edit-admin-students/edit-admin-students.component';
+import { DisplayAdminSchoolsComponent } from './components/admin-schools/display-admin-schools/display-admin-schools.component';
+import { AddAdminSchoolsComponent } from './components/admin-schools/add-admin-schools/add-admin-schools.component';
+import { EditAdminSchoolsComponent } from './components/admin-schools/edit-admin-schools/edit-admin-schools.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { EditAdminStudentsComponent } from './components/admin-students/edit-adm
     DisplayAdminStudentsComponent,
     AdminOverviewComponent,
     AddAdminStudentsComponent,
-    EditAdminStudentsComponent
+    EditAdminStudentsComponent,
+    DisplayAdminSchoolsComponent,
+    AddAdminSchoolsComponent,
+    EditAdminSchoolsComponent
   ],
   imports: [
     CommonModule,

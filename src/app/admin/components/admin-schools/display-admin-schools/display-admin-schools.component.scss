@@ -1,0 +1,17 @@
+@import '../../../../../assets/css/dash.scss';
+@import '../../../../../assets/css/variables.scss';
+@import '../../../../../assets/css/mixins.scss';
+@import '../../../../../assets/css/modal.scss';
+
+.data-sect {
+    @include white-container();
+    &_header {
+        padding: $s-1;
+        background-color: $divider-color1;
+        &_list {
+            justify-content: space-between;
+            gap: $s-2;
+        }
+    }
+
+}

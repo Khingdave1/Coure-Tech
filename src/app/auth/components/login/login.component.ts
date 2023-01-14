@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
 export class LoginComponent {
 
   hide: boolean = true
+  alertMessage: string = 'Click Login to continue!';
+  alertColor: string = 'warning';
+  isAlert: boolean = true;
 
 }
