@@ -1,1 +1,163 @@
-<p>add-admin-students works!</p>
+<!-- Alert -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [alertMessage]="alertMessage"
+  [alertColor]="alertColor"
+></app-alert-popup>
+
+<form class="form" [formGroup]="studentForm">
+    <div class="form_control">
+        <label for="title">Title</label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && studentForm.controls.title.errors
+          }">
+            <input type="text" id="title" placeholder="Enter Title" formControlName="title">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && studentForm.controls.title.errors"
+          >
+            <small *ngIf="studentForm.controls.title.errors.required"
+              >Title is required</small
+            >
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="firstName">First Name</label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && studentForm.controls.firstName.errors
+          }">
+            <input type="text" id="firstName" placeholder="Enter First Name" formControlName="firstName">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && studentForm.controls.firstName.errors"
+          >
+            <small *ngIf="studentForm.controls.firstName.errors.required"
+              >First Name is required</small
+            >
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="lastName">Last Name</label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && studentForm.controls.lastName.errors
+          }">
+            <input type="text" id="lastName" placeholder="Enter Last Name" formControlName="lastName">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && studentForm.controls.lastName.errors"
+          >
+            <small *ngIf="studentForm.controls.lastName.errors.required"
+              >Last Name is required</small
+            >
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="email">Email</label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && studentForm.controls.email.errors
+          }">
+            <input type="email" id="email" placeholder="Enter Email" formControlName="email">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && studentForm.controls.email.errors"
+          >
+            <small *ngIf="studentForm.controls.email.errors.required"
+              >Email is required</small
+            >
+            <small *ngIf="studentForm.controls.email.errors.email"
+              >Email is invalid</small
+            >
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="phoneNumber">Phone Number</label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && studentForm.controls.phoneNumber.errors
+          }">
+            <input type="tel" id="phoneNumber" placeholder="Enter Phone Number" formControlName="phoneNumber">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && studentForm.controls.phoneNumber.errors"
+          >
+            <small *ngIf="studentForm.controls.phoneNumber.errors.required"
+              >Phone number is required</small
+            >
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="address">Address</label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && studentForm.controls.address.errors
+          }">
+            <input type="text" id="address" placeholder="Enter Address" formControlName="address">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && studentForm.controls.address.errors"
+          >
+            <small *ngIf="studentForm.controls.address.errors.required"
+              >Address is required</small
+            >
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="dateOfBirth">Date of Birth</label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && studentForm.controls.dateOfBirth.errors
+          }">
+            <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && studentForm.controls.dateOfBirth.errors"
+          >
+            <small *ngIf="studentForm.controls.dateOfBirth.errors.required"
+              >Date of Birth is required</small
+            >
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="department">Department</label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && studentForm.controls.department.errors
+          }">
+            <input type="text" id="department" placeholder="Enter Department" formControlName="department">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && studentForm.controls.department.errors"
+          >
+            <small *ngIf="studentForm.controls.department.errors.required"
+              >Department is required</small
+            >
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="school">School</label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && studentForm.controls.school.errors
+          }">
+            <input type="text" id="school" placeholder="Enter School" formControlName="school">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && studentForm.controls.school.errors"
+          >
+            <small *ngIf="studentForm.controls.school.errors.required"
+              >School is required</small
+            >
+        </div>
+    </div>
+    <div class="form_btn dis-flex">
+        <button class="btn tert_btn" *ngIf="!loading" (click)="saveAndNewStudent()">Save and New</button>
+        <button class="btn prim_btn" *ngIf="!loading" (click)="saveAndCloseStudent()">Save and Close</button>
+        <button class="btn load_btn" *ngIf="loading" [disabled]="loading">
+          <app-loader></app-loader>
+        </button>
+    </div>
+</form>

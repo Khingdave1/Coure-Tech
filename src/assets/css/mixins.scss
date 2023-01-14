@@ -28,6 +28,8 @@
   grid-gap: $s-2;
   &_control {
       label {
+          font-size: 18px;
+          font-weight: 500;
           display: inline-block;
           margin-bottom: $s-1;
       }

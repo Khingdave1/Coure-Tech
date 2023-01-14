@@ -7,20 +7,44 @@ import { DisplayAdminStudentsComponent } from './components/admin-students/displ
 import { AdminOverviewComponent } from './components/admin-overview/admin-overview.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
+import { ToastModule } from 'primeng/toast';
+import { DropdownModule } from 'primeng/dropdown';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { CascadeSelectModule } from 'primeng/cascadeselect';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { AddAdminStudentsComponent } from './components/admin-students/add-admin-students/add-admin-students.component';
+import { EditAdminStudentsComponent } from './components/admin-students/edit-admin-students/edit-admin-students.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     DisplayAdminStudentsComponent,
-    AdminOverviewComponent
+    AdminOverviewComponent,
+    AddAdminStudentsComponent,
+    EditAdminStudentsComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    ButtonModule,
+    TableModule,
+    PaginatorModule,
+    SplitButtonModule,
+    ConfirmPopupModule,
+    DropdownModule,
+    CascadeSelectModule,
+    ConfirmDialogModule,
+    ToastModule,
+  ],
+  providers: [MessageService, ConfirmationService],
 })
 export class AdminModule { }

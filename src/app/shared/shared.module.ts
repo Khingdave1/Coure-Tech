@@ -5,6 +5,8 @@ import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashbo
 import { GoBackTopComponent } from './components/go-back-top/go-back-top.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { LoaderComponent } from './components/loader/loader.component';
+import { AlertPopupComponent } from './components/alert-popup/alert-popup.component';
 
 
 
@@ -12,7 +14,9 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     DashboardHeaderComponent,
     DashboardSidenavComponent,
-    GoBackTopComponent
+    GoBackTopComponent,
+    LoaderComponent,
+    AlertPopupComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +26,9 @@ import { FormsModule } from '@angular/forms';
   exports: [
     DashboardHeaderComponent,
     DashboardSidenavComponent,
-    GoBackTopComponent
+    GoBackTopComponent,
+    LoaderComponent,
+    AlertPopupComponent
   ]
 })
 export class SharedModule { }

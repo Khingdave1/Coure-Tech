@@ -1,1 +1,176 @@
-<p>display-admin-students works!</p>
+  <!-- Confirm Popup -->
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<section class="main_header dis-flex">
+    <div class="breadcrumb">
+        <h3 class="clickable" routerLink="/admin/students">Students</h3>
+    </div>
+    <div class="btns dis-flex">
+        <!-- <button class="btn tert_btn">
+        Download CSV
+        </button> -->
+        <button class="btn prim_btn" (click)="openAddModal()">
+        Add Student
+        </button>
+    </div>
+</section>
+
+<section class="data-sect">
+    <div class="data-sect_header">
+        <ul class="data-sect_header_list dis-flex">
+            <li>
+                <p>{{ students?.length }} Students</p>
+            </li>
+            <li>
+                <span class="p-input-icon-left"
+                    ><i class="pi pi-search"></i
+                    ><input
+                    pInputText
+                    #textInput
+                    type="text"
+                    placeholder="Search here..."
+                    (input)="dt.filterGlobal(textInput.value, 'contains')"
+                    class="p-inputtext p-component"
+                /></span>
+            </li>
+        </ul>
+    </div>
+    <div class="">
+        <p-table
+            #dt
+            [value]="students"
+            styleClass="p-datatable-gridlines p-datatable-sm"
+            [loading]="dataLoading"
+            responsiveLayout="scroll"
+            [responsive]="true"
+            scrollDirection="both"
+            selectionMode="single"
+            dataKey="id"
+            [rows]="10"
+            [paginator]="true"
+            [rowHover]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [rowsPerPageOptions]="[10, 25, 50]"
+            sortMode="single"
+            rowGroupMode="subheader"
+            [showCurrentPageReport]="true"
+            [globalFilterFields]="['firstName', 'lastName']"
+            [resizableColumns]="true"
+        >
+            <!-- scrollHeight="400px" -->
+            <ng-template pTemplate="header" rowGroupMode="subheader">
+            <tr class="table-header">
+                <th pResizableColumn>#</th>
+                <th pSortableColumn="firstName" pResizableColumn>
+                First Name <p-sortIcon field="code"></p-sortIcon>
+                </th>
+                <th pSortableColumn="lastName" pResizableColumn>
+                Last Name <p-sortIcon field="code"></p-sortIcon>
+                </th>
+                <th pResizableColumn>
+                Email 
+                </th>
+                <th pResizableColumn>
+                Address 
+                </th>
+                <th pResizableColumn>
+                Date of Birth 
+                </th>
+                <th pResizableColumn>
+                Department
+                </th>
+            </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-student>
+                <tr class="table-body">
+                    <td pFrozenColumn>
+                        <button
+                            pButton
+                            pRipple
+                            icon="pi pi-pencil"
+                            class="p-button-rounded p-button-primary p-button-text"
+                            (click)="
+                            openEditModal(student)
+                            "
+                        ></button>
+                        <button
+                            pButton
+                            pRipple
+                            icon="pi pi-trash"
+                            class="p-button-rounded p-button-danger p-button-text"
+                            (click)="
+                            removeStudent(
+                                student,
+                                $event
+                            )
+                            "
+                        ></button>
+                    </td>
+                    <td>
+                        <span>{{ student?.firstName }}</span>
+                    </td>
+                    <td>
+                        <span>{{ student?.lastName }}</span>
+                    </td>
+                    <td>
+                        <span>{{ student?.email }}</span>
+                    </td>
+                    <td>
+                        <span>{{ student?.address }}</span>
+                    </td>
+                    <td>
+                        <span>{{ student?.dateOfBirth | date: 'mediumDate' }}</span>
+                    </td>
+                    <td>
+                        <span>{{ student?.department}}</span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</section>
+
+<div class="modal" *ngIf="addModal || editModal">
+    <div class="modal_area">
+        <span class="modal_area_close clickable" (click)="addModal = false || editModal = false">
+            <i class='bx bx-x icon'></i>
+        </span>
+        <!-- Add modal -->
+        <ng-container *ngIf="addModal">
+            <div class="modal_area_header">
+                <h3 class="modal_area_header_title">Add Student</h3>
+            </div>
+            <app-add-admin-students (addModal)="closeAddModal()"></app-add-admin-students>
+        </ng-container>
+        <!-- Edit modal -->
+        <ng-container *ngIf="editModal">
+            <div class="modal_area_header">
+                <h3 class="modal_area_header_title">Edit Student</h3>
+            </div>
+            <app-edit-admin-students (editModal)="closeEditModal()"></app-edit-admin-students>
+        </ng-container>
+    </div>
+</div>
+
+<!-- <div class="modal">
+    [class.show-modal]="addModal || editModal"
+    <div class="modal_area">
+        
+      <app-add
+        *ngIf="addModal"
+        [postUrl]="postUrl"
+        [modalHeaderName]="modalHeaderName"
+        (addModal)="closeAddModal()"
+      ></app-add>
+      <app-edit
+        *ngIf="editModal"
+        [updateUrl]="updateProjectUrl"
+        [currentItem]="currentItem"
+        [modalHeaderName]="modalHeaderName"
+        (editModal)="closeEditModal()"
+      ></app-edit>
+    </div>
+  </div> -->
+  
+
+  

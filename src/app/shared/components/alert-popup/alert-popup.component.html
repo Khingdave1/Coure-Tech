@@ -1,0 +1,9 @@
+<div
+  class="alert"
+  id="alert"
+  [class.bg-success-color]="alertColor == 'success'"
+  [class.bg-danger-color]="alertColor == 'error'"
+  [class.bg-warning-color]="alertColor == 'warning'"
+>
+  <p>{{ alertMessage }}</p>
+</div>
