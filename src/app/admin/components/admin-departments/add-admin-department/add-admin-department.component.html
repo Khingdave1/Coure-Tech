@@ -1,0 +1,49 @@
+<!-- Alert -->
+<app-alert-popup
+  *ngIf="isAlert"
+  [alertMessage]="alertMessage"
+  [alertColor]="alertColor"
+></app-alert-popup>
+
+<form class="form" [formGroup]="departmentForm">
+    <div class="form_control">
+        <label for="name">Name <strong class="required">*</strong></label>
+        <div class="form_control_input" [ngClass]="{
+            'is-invalid': isFormSubmitted && departmentForm.controls.name.errors
+          }">
+            <input type="text" id="name" placeholder="Enter Name" formControlName="name">
+        </div>
+        <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && departmentForm.controls.name.errors"
+          >
+            <small *ngIf="departmentForm.controls.name.errors.required"
+              >Name is required</small
+            >
+        </div>
+    </div>
+    <div class="form_control">
+        <label for="school">School <strong class="required">*</strong></label>
+        <div class="form_control_input">
+            <!-- [ngClass]="{
+                'is-invalid': isFormSubmitted && departmentForm.controls.school.errors
+              }" -->
+            <input type="text" id="department" placeholder="Enter department" formControlName="school">
+        </div>
+        <!-- <div
+            class="form_control_message"
+            *ngIf="isFormSubmitted && departmentForm.controls.school.errors"
+          >
+            <small *ngIf="departmentForm.controls.school.errors.required"
+              >department is required</small
+            >
+        </div> -->
+    </div>
+    <div class="form_btn dis-flex">
+        <button class="btn tert_btn" *ngIf="!loading" (click)="saveAndNewDepartment()">Save and New</button>
+        <button class="btn prim_btn" *ngIf="!loading" (click)="saveAndCloseDepartment()">Save and Close</button>
+        <button class="btn load_btn" *ngIf="loading" [disabled]="loading">
+          <app-loader></app-loader>
+        </button>
+    </div>
+</form>

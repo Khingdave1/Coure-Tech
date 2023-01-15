@@ -22,6 +22,9 @@ import { EditAdminStudentComponent } from './components/admin-students/edit-admi
 import { DisplayAdminSchoolsComponent } from './components/admin-schools/display-admin-schools/display-admin-schools.component';
 import { AddAdminSchoolComponent } from './components/admin-schools/add-admin-school/add-admin-school.component';
 import { EditAdminSchoolComponent } from './components/admin-schools/edit-admin-school/edit-admin-school.component';
+import { DisplayAdminDepartmentsComponent } from './components/admin-departments/display-admin-departments/display-admin-departments.component';
+import { AddAdminDepartmentComponent } from './components/admin-departments/add-admin-department/add-admin-department.component';
+import { EditAdminDepartmentComponent } from './components/admin-departments/edit-admin-department/edit-admin-department.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { EditAdminSchoolComponent } from './components/admin-schools/edit-admin-
     EditAdminStudentComponent,
     DisplayAdminSchoolsComponent,
     AddAdminSchoolComponent,
-    EditAdminSchoolComponent
+    EditAdminSchoolComponent,
+    DisplayAdminDepartmentsComponent,
+    AddAdminDepartmentComponent,
+    EditAdminDepartmentComponent
   ],
   imports: [
     CommonModule,

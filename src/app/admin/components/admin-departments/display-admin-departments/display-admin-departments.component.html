@@ -1,0 +1,134 @@
+  <!-- Confirm Popup -->
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<section class="main_header dis-flex">
+    <div class="breadcrumb">
+        <h3 class="clickable" routerLink="/admin/departments">Departments</h3>
+    </div>
+    <div class="btns dis-flex">
+        <!-- <button class="btn tert_btn">
+        Download CSV
+        </button> -->
+        <button class="btn prim_btn" (click)="openAddModal()">
+        Add department
+        </button>
+    </div>
+</section>
+
+<!-- Data Table -->
+<section class="data-sect">
+    <div class="data-sect_header">
+        <ul class="data-sect_header_list dis-flex">
+            <li>
+                <p>{{ departments?.length }} departments</p>
+            </li>
+            <li>
+                <span class="p-input-icon-left"
+                    ><i class="pi pi-search"></i
+                    ><input
+                    pInputText
+                    #textInput
+                    type="text"
+                    placeholder="Search here..."
+                    (input)="dt.filterGlobal(textInput.value, 'contains')"
+                    class="p-inputtext p-component"
+                /></span>
+            </li>
+        </ul>
+    </div>
+    <div class="">
+        <p-table
+            #dt
+            [value]="departments"
+            styleClass="p-datatable-gridlines p-datatable-sm"
+            [loading]="dataLoading"
+            responsiveLayout="scroll"
+            [responsive]="true"
+            scrollDirection="both"
+            selectionMode="single"
+            dataKey="id"
+            [rows]="10"
+            [paginator]="true"
+            [rowHover]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [rowsPerPageOptions]="[10, 25, 50]"
+            sortMode="single"
+            rowGroupMode="subheader"
+            [showCurrentPageReport]="true"
+            [globalFilterFields]="['name']"
+            [resizableColumns]="true"
+        >
+            <!-- scrollHeight="400px" -->
+            <ng-template pTemplate="header" rowGroupMode="subheader">
+            <tr class="table-header">
+                <th pResizableColumn>#</th>
+                <th pSortableColumn="name" pResizableColumn>
+                Name <p-sortIcon field="code"></p-sortIcon>
+                </th>
+                <!-- <th pSortableColumn="name" pResizableColumn>
+                School <p-sortIcon field="code"></p-sortIcon>
+                </th> -->
+            </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-department>
+                <tr class="table-body">
+                    <td pFrozenColumn>
+                        <button
+                            pButton
+                            pRipple
+                            icon="pi pi-pencil"
+                            class="p-button-rounded p-button-primary p-button-text"
+                            (click)="
+                            openEditModal(department.id)
+                            "
+                        ></button>
+                        <button
+                            pButton
+                            pRipple
+                            icon="pi pi-trash"
+                            class="p-button-rounded p-button-danger p-button-text"
+                            (click)="
+                            removeDepartment(
+                                department,
+                                $event
+                            )
+                            "
+                        ></button>
+                    </td>
+                    <td>
+                        <span>{{ department?.name }}</span>
+                    </td>
+                    <!-- <td>
+                        <span>{{ department?.school }}</span>
+                    </td> -->
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" *ngIf="addModal || editModal">
+    <div class="modal_area">
+        <span class="modal_area_close clickable" (click)="addModal = false || editModal = false">
+            <i class='bx bx-x icon'></i>
+        </span>
+        <!-- Add modal -->
+        <ng-container *ngIf="addModal">
+            <div class="modal_area_header">
+                <h3 class="modal_area_header_title">Add department</h3>
+            </div>
+            <app-add-admin-department (addModal)="closeAddModal()"></app-add-admin-department>
+        </ng-container>
+        <!-- Edit modal -->
+        <ng-container *ngIf="editModal">
+            <div class="modal_area_header">
+                <h3 class="modal_area_header_title">Edit department</h3>
+            </div>
+            <app-edit-admin-department (editModal)="closeEditModal()" [departmentId]="currentDepartmentId"></app-edit-admin-department>
+        </ng-container>
+    </div>
+</div>
+  
+
+  
