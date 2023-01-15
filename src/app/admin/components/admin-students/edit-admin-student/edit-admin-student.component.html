@@ -51,13 +51,10 @@
     <div class="form_control">
         <label for="department">Department</label>
         <div class="form_control_input">
-            <input type="text" id="department" placeholder="Enter Department" formControlName="department">
-        </div>
-    </div>
-    <div class="form_control">
-        <label for="school">School</label>
-        <div class="form_control_input">
-            <input type="text" id="school" placeholder="Enter School" formControlName="school">
+            <select name="school" id="school" formControlName="department">
+                <option value="">Select a Department</option>
+                <option [value]="department.name" *ngFor="let department of departments">{{ department?.name }}</option>
+              </select>
         </div>
     </div>
     <div class="form_btn dis-flex">

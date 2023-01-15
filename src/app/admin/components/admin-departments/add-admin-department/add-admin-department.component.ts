@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs';
 import { DepartmentService } from 'src/app/admin/services/department.service';
+import { SchoolService } from 'src/app/admin/services/school.service';
 
 @Component({
   selector: 'app-add-admin-department',
@@ -20,13 +21,24 @@ export class AddAdminDepartmentComponent {
   isFormSubmitted: boolean = false;
   isSignedin: boolean = false;
   departmentPayload: any;
+  schools: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private departmentService: DepartmentService
+    private departmentService: DepartmentService,
+    private schoolService: SchoolService
   ) {}
 
   ngOnInit(): void {
+
+    // Get All schools
+    this.schoolService.getSchools().subscribe({
+      next: (res: any) => {
+        this.schools = res;
+      },
+      error: (e) => console.error(e),
+    });
+
     // User form
     this.departmentForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -118,6 +130,9 @@ export class AddAdminDepartmentComponent {
         name: this.departmentForm.value.school
       }
     }
+
+    console.log(this.departmentPayload);
+    
   }
 
   // Close modal

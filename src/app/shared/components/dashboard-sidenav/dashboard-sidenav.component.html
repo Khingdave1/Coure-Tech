@@ -14,18 +14,7 @@
           Overview
         </li>
         <li
-          class="dis-flex"
-          routerLinkActive="active"
-          routerLink="/admin/students"
-          (click)="closeMenu()"
-        >
-          <span class="">
-            <i class='bx bx-male-female icon'></i>
-          </span>
-          Students
-        </li>
-        <li
-          class="dis-flex"
+        class="dis-flex"
           routerLinkActive="active"
           routerLink="/admin/schools"
           (click)="closeMenu()"
@@ -40,11 +29,22 @@
           routerLinkActive="active"
           routerLink="/admin/departments"
           (click)="closeMenu()"
-        >
+          >
           <span class="">
             <i class='bx bxs-building icon'></i>
           </span>
           Departments
+        </li>
+        <li
+          class="dis-flex"
+          routerLinkActive="active"
+          routerLink="/admin/students"
+          (click)="closeMenu()"
+        >
+          <span class="">
+            <i class='bx bx-male-female icon'></i>
+          </span>
+          Students
         </li>
       </ul>
     </nav>

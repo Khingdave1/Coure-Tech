@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs';
+import { DepartmentService } from 'src/app/admin/services/department.service';
 import { StudentService } from 'src/app/admin/services/student.service';
 
 @Component({
@@ -21,13 +22,25 @@ export class AddAdminStudentComponent {
   isFormSubmitted: boolean = false;
   isSignedin: boolean = false;
   studentPayload: any;
+  departments: any;
+  department: any;
 
   constructor(
     private formBuilder: FormBuilder,
-    private studentService: StudentService
+    private studentService: StudentService,
+    private departmentService: DepartmentService
   ) {}
 
   ngOnInit(): void {
+
+    // Get All departments
+    this.departmentService.getDepartments().subscribe({
+      next: (res: any) => {
+        this.departments = res;
+      },
+      error: (e) => console.error(e),
+    });
+
     // User form
     this.studentForm = this.formBuilder.group({
       title: ['', [Validators.required]],
@@ -38,7 +51,6 @@ export class AddAdminStudentComponent {
       address: ['', [Validators.required]],
       dateOfBirth: ['', [Validators.required]],
       department: ['', [Validators.required]],
-      school: ['', [Validators.required]],
     });
   }
 
@@ -131,10 +143,12 @@ export class AddAdminStudentComponent {
       department: {
         name: this.studentForm.value.department,
         school: {
-          name: this.studentForm.value.school
+          name: ''
         }
       }
     }
+
+    
   }
 
   // Close modal

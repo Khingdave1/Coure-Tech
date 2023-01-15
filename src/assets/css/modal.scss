@@ -58,6 +58,24 @@
 
 .form {
     @include form();
+    .form_control.select {
+      .form_control_input {
+          gap: $s-2;
+          justify-content: space-between;
+          padding: $s-2;
+          
+          .title {
+              font-size: 16px;
+              font-weight: 400;
+          }
+          .icon {
+              font-size: 21px;
+          }
+      }
+      .file-name {
+          margin-top: 0.3rem;
+      }
+  }
     &_btn {
       gap: $s-2;
     }

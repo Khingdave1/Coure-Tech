@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs';
+import { DepartmentService } from 'src/app/admin/services/department.service';
 import { StudentService } from 'src/app/admin/services/student.service';
 
 @Component({
@@ -23,10 +24,12 @@ export class EditAdminStudentComponent {
   isSignedin: boolean = false;
   studentPayload: any;
   student: any;
+  departments: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private studentService: StudentService,
+    private departmentService: DepartmentService,
     private datePipe: DatePipe
   ) {}
 
@@ -40,10 +43,17 @@ export class EditAdminStudentComponent {
     address: ['', [Validators.required]],
     dateOfBirth: ['', [Validators.required]],
     department: ['', [Validators.required]],
-    school: ['', [Validators.required]],
   });
 
   ngOnInit(): void {
+
+    // Get All departments
+    this.departmentService.getDepartments().subscribe({
+      next: (res: any) => {
+        this.departments = res;
+      },
+      error: (e) => console.error(e),
+    });
     
     // Get All students
     this.studentService.getStudentById(this.studentId).subscribe({
@@ -60,7 +70,6 @@ export class EditAdminStudentComponent {
           address: [this.student.address, [Validators.required]],
           dateOfBirth: [this.datePipe.transform(this.student.dateOfBirth, 'yyyy-MM-dd'), [Validators.required]],
           department: [this.student.department, [Validators.required]],
-          school: [this.student.school, [Validators.required]],
         });
       },
       error: (e) => console.error(e),
@@ -110,12 +119,13 @@ export class EditAdminStudentComponent {
       address: this.studentForm.value.address,
       dateOfBirth: this.studentForm.value.dateOfBirth,
       department: {
-        name: this.studentForm.value.department,
+        name: this.studentForm.value.department === null ? '' : this.studentForm.value.department,
         school: {
-          name: this.studentForm.value.school
+          name: ''
         }
       }
     }
+    
   }
 
   // Close modal

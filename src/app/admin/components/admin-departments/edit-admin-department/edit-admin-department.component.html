@@ -15,7 +15,10 @@
     <div class="form_control">
         <label for="name">School</label>
         <div class="form_control_input">
-            <input type="text" id="name" placeholder="Enter School" formControlName="school">
+            <select name="school" id="school" formControlName="school">
+                <option value="">Select a School</option>
+                <option [value]="school.name" *ngFor="let school of schools">{{ school?.name }}</option>
+            </select>
         </div>
     </div>
     <div class="form_btn dis-flex">

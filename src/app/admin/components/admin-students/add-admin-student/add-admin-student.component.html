@@ -126,7 +126,10 @@
         <div class="form_control_input" [ngClass]="{
             'is-invalid': isFormSubmitted && studentForm.controls.department.errors
           }">
-            <input type="text" id="department" placeholder="Enter Department" formControlName="department">
+          <select name="school" id="school" formControlName="department">
+            <option value="">Select a Department</option>
+            <option [value]="department.name" *ngFor="let department of departments">{{ department?.name }}</option>
+          </select>
         </div>
         <div
             class="form_control_message"
@@ -137,22 +140,7 @@
             >
         </div>
     </div>
-    <div class="form_control">
-        <label for="school">School <strong class="required">*</strong></label>
-        <div class="form_control_input" [ngClass]="{
-            'is-invalid': isFormSubmitted && studentForm.controls.school.errors
-          }">
-            <input type="text" id="school" placeholder="Enter School" formControlName="school">
-        </div>
-        <div
-            class="form_control_message"
-            *ngIf="isFormSubmitted && studentForm.controls.school.errors"
-          >
-            <small *ngIf="studentForm.controls.school.errors.required"
-              >School is required</small
-            >
-        </div>
-    </div>
+    
     <div class="form_btn dis-flex">
         <button class="btn tert_btn" *ngIf="!loading" (click)="saveAndNewStudent()">Save and New</button>
         <button class="btn prim_btn" *ngIf="!loading" (click)="saveAndCloseStudent()">Save and Close</button>

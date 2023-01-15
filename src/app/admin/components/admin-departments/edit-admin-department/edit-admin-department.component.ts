@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs';
 import { DepartmentService } from 'src/app/admin/services/department.service';
+import { SchoolService } from 'src/app/admin/services/school.service';
 
 @Component({
   selector: 'app-edit-admin-department',
@@ -23,10 +24,12 @@ export class EditAdminDepartmentComponent {
   isSignedin: boolean = false;
   departmentPayload: any;
   department: any;
+  schools: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private departmentService: DepartmentService,
+    private schoolService: SchoolService,
     private datePipe: DatePipe
   ) {}
 
@@ -42,6 +45,7 @@ export class EditAdminDepartmentComponent {
     this.departmentService.getDepartmentById(this.departmentId).subscribe({
       next: (res: any) => {
         this.department = res;
+        console.log(this.department);
         
         // User form
         this.departmentForm = this.formBuilder.group({
@@ -52,6 +56,14 @@ export class EditAdminDepartmentComponent {
       error: (e) => console.error(e),
       // complete: () => {
       // },
+    });
+
+    // Get All schools
+    this.schoolService.getSchools().subscribe({
+      next: (res: any) => {
+        this.schools = res;
+      },
+      error: (e) => console.error(e),
     });
 
   }
@@ -90,8 +102,9 @@ export class EditAdminDepartmentComponent {
       id: this.department.id,
       name: this.departmentForm.value.name,
       school: {
-        name: this.departmentForm.value.school
-      }
+        // id: this.department.schoolId,
+        name: this.departmentForm.value.school === null ? '' : this.departmentForm.value.school
+      } 
     }
   }
 
